@@ -1,6 +1,6 @@
 import React from 'react'
-import lupulo from '../imgnavegador/lupulo.png'
-import CartWidget from "./cart/CartWidget"
+import lupulo from '../../imgnavegador/lupulo.png'
+import CartWidget from "../cart/CartWidget"
 
 function Navbar() {
     return (

@@ -1,11 +1,16 @@
 import React from 'react'
+import {useState } from 'react';
 
 export const ItemListContainer = ({saludo}) => {
+
+ 
+
     return (
         <div>
-            {saludo}
+            <h2>{saludo}</h2>
         </div>
     )
 }
+
 
 
