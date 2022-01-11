@@ -50,3 +50,36 @@ code {
   color: #e9c9c9;
   border-bottom: 2px ridge black;
 }
+
+.listContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+ 
+.contenedor{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.card {
+  width: 200px !important;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+}
+
+.imagenes {
+  width: 70px !important;
+  height: 70px !important;
+}

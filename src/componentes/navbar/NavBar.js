@@ -1,6 +1,7 @@
 import React from 'react'
 import lupulo from '../../imgnavegador/lupulo.png'
 import CartWidget from "../cart/CartWidget"
+import {Link} from 'react-router-dom'
 
 function Navbar() {
     return (
@@ -13,19 +14,21 @@ function Navbar() {
             <a href="">Locales</a>
           </li>
           <li>
-            <a href=""
+            <Link to="/"
               ><img src={lupulo} alt=""
-            /></a>
+            /></Link>
           </li>
 
           <li>
-            <a href="l">Tienda</a>
+            <Link to="/categoria/rubia">rubia</Link>
           </li>
           <li>
             <a href="">Contacto</a>
           </li>
         </ul>
+        <Link to="/cart">
         <CartWidget className="carrito" />
+        </Link>
       </nav> 
     )
 }
