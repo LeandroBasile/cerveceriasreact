@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,10 +9,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 /* Estilos NAVBAR */
 
@@ -25,19 +24,20 @@ code {
   justify-content: center;
   position: sticky;
   top: 0;
+  text-transform: uppercase;
 }
 .navegador ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   gap: 2rem;
 }
-.navegador ul li {
-  position: relative;
-  padding: 1rem;
-}
-.navegador ul li a {
+
+.navegador ul a {
+  height: auto;
   display: block;
   padding: 5px 5px;
   color: white;
@@ -46,24 +46,55 @@ code {
   font-size: 3rem;
   font-weight: bold;
 }
+.navegador ul li {
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
 .navegador ul li a:hover {
   color: #e9c9c9;
   border-bottom: 2px ridge black;
 }
 
-.listContainer{
+.navegador ul ul {
+  display: none;
+  position: absolute;
+  /* top: 100%; */
+  /* left: 0;
+  padding: 0; */
+}
+
+.navegador ul ul li {
+  float: none;
+  /* width: 150px; */
+}
+
+.navegador ul ul a {
+  line-height: 120%;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: black;
+}
+
+.navegador ul li:hover > ul {
+  display: block;
+  position: relative;
+}
+
+.listContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.cards{
+.cards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
- 
-.contenedor{
+
+.contenedor {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -82,4 +113,34 @@ code {
 .imagenes {
   width: 70px !important;
   height: 70px !important;
+}
+
+.cajaDetalle {
+    width: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.itemDetalle{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.detalle{
+  padding: 30px;
+  margin: 10px;
+}
+
+.detalleCompra{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contador{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

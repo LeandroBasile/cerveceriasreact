@@ -20,11 +20,15 @@ function ItemContador() {
   }
 
   return (
-    <div>
-      <button type="button" class="btn btn-danger" onClick={restarContador}>-</button>
-      <text>{contador}</text>
-      <button type="button" class="btn btn-success" onClick={sumarContador}>+</button> <br></br>
-      <button type="button" class="btn btn-primary" onClick={mostrarContador}>Agregar a Carrito</button>
+    <div className="contador">
+      <div>
+        <button type="button" class="btn btn-danger" onClick={restarContador}>-</button>
+        <text>{contador}</text>
+        <button type="button" class="btn btn-success" onClick={sumarContador}>+</button> <br></br>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" onClick={mostrarContador}>Agregar a Carrito</button>
+      </div>
     </div>
   );
 }

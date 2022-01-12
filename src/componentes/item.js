@@ -8,11 +8,11 @@ import ipa from "../imgnavegador/ipa.png"
 
 
 const cervezas = [
-  { id: '1', title: "Irish", description: "1L", prise: "$200", foto: irish },
+  { id: '1', title: "Irish", description: "1L", prise: "$200", foto: irish, categoria:"roja" },
   { id: '2', title: "Dorada", description: "1L", prise: "$200", foto: dorada , categoria: "rubia" },
   { id: '3', title: "Dorada P", description: "1L", prise: "$200", foto: doradaPampeana , categoria: "rubia" },
-  { id: '4', title: "Stout", description: "1L", prise: "$200", foto: stout },
-  { id: '5', title: "Apa", description: "1L", prise: "$200", foto: apa , categoria: "rubia" },
+  { id: '4', title: "Stout", description: "1L", prise: "$200", foto: stout, categoria:"negra" },
+  { id: '5', title: "Apa", description: "1L", prise: "$200", foto: apa , categoria: "roja" },
   { id: '6', title: "Ipa", description: "1L", prise: "$200", foto: ipa , categoria: "rubia" },
 ];
 
