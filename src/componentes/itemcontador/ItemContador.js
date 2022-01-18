@@ -2,11 +2,14 @@ import React from "react";
 import { useState } from "react";
 import bootstrap from "bootstrap";
 
-function ItemContador() {
+function ItemContador({stock, onAdd}) {
   const [contador, setContador] = useState(0);
 
   const sumarContador = () => {
-    setContador(contador + 1);
+    if (contador <= stock){
+    setContador(contador + 1);}else{
+      alert('sin stock')
+    }
   };
 
   const restarContador = () => {
@@ -15,9 +18,9 @@ function ItemContador() {
       }
   };
 
-  const mostrarContador = () => {
-      alert(contador)
-  }
+  // const mostrarContador = () => {
+  //     alert(contador)
+  // }
 
   return (
     <div className="contador">
@@ -27,7 +30,7 @@ function ItemContador() {
         <button type="button" class="btn btn-success" onClick={sumarContador}>+</button> <br></br>
       </div>
       <div>
-        <button type="button" class="btn btn-primary" onClick={mostrarContador}>Agregar a Carrito</button>
+        <button type="button" class="btn btn-primary" onClick={()=>onAdd(contador)}>Agregar a Carrito</button>
       </div>
     </div>
   );

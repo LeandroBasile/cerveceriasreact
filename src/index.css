@@ -66,6 +66,7 @@ code {
 }
 
 .navegador ul ul li {
+  position: relative;
   float: none;
   /* width: 150px; */
 }
@@ -103,44 +104,82 @@ code {
 
 .card {
   width: 200px !important;
-  height: auto;
+  height: 250px;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 10px;
 }
 
+.cajaInfoCard {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 .imagenes {
   width: 70px !important;
-  height: 70px !important;
+  height: 100px !important;
 }
 
 .cajaDetalle {
-    width: auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.itemDetalle{
   margin-top: 100px;
+  width: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.itemDetalle {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.detalle{
+.detalle {
   padding: 30px;
   margin: 10px;
 }
+.detalleProducto{
+  background-color: white;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-.detalleCompra{
+.imagenDetail{
+  width: 200px;
+  height: 300px;
+}
+
+.detalleCompra {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.contador{
+.contador {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.contador div {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  gap: 5px;
+  padding: 3px;
+  width: auto;
+  align-self: center;
+  border-bottom: 1.5px black solid;
 }
