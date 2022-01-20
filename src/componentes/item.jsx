@@ -1,4 +1,3 @@
-import lupulo from "../imgnavegador/lupulo.png";
 import irish from "../imgnavegador/irishred-min.png"
 import dorada from "../imgnavegador/dorada-min.png"
 import doradaPampeana from "../imgnavegador/doradapampeana1-min.png"

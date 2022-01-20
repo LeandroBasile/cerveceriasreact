@@ -1,21 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import bootstrap from "bootstrap";
 
-function ItemContador({stock, onAdd}) {
+function ItemContador({ stock, onAdd }) {
   const [contador, setContador] = useState(0);
 
   const sumarContador = () => {
-    if (contador <= stock){
-    setContador(contador + 1);}else{
-      alert('sin stock')
+    if (contador <= stock) {
+      setContador(contador + 1);
+    } else {
+      alert("sin stock");
     }
   };
 
   const restarContador = () => {
-      if (contador>0){
-    setContador(contador - 1);
-      }
+    if (contador > 0) {
+      setContador(contador - 1);
+    }
   };
 
   // const mostrarContador = () => {
@@ -25,12 +25,31 @@ function ItemContador({stock, onAdd}) {
   return (
     <div className="contador">
       <div>
-        <button type="button" class="btn btn-danger" onClick={restarContador}>-</button>
-        <text>{contador}</text>
-        <button type="button" class="btn btn-success" onClick={sumarContador}>+</button> <br></br>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={restarContador}
+        >
+          -
+        </button>
+        <h3>{contador}</h3>
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={sumarContador}
+        >
+          +
+        </button>{" "}
+        <br></br>
       </div>
       <div>
-        <button type="button" class="btn btn-primary" onClick={()=>onAdd(contador)}>Agregar a Carrito</button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => onAdd(contador)}
+        >
+          Agregar a Carrito
+        </button>
       </div>
     </div>
   );

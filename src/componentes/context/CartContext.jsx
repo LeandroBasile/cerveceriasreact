@@ -14,12 +14,13 @@ export const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
 
   function agregarAlCarrito(items) {
+    console.log(items)
     setCartList([...cartList, items]);
 
     const indice = cartList.findIndex((i) => i.id === items.id);
 
     if (indice > -1) {
-      const cantidadVieja = cartList[indice].cantidad;
+      const cantidadVieja = cartList[indice].cantidad; 
 
       let cantidadNueva = cantidadVieja + items.cantidad;
 
