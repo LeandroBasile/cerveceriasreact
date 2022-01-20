@@ -84,9 +84,12 @@ code {
 }
 
 .listContainer {
+  width: 100vw;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .cards {
@@ -182,4 +185,10 @@ code {
   width: auto;
   align-self: center;
   border-bottom: 1.5px black solid;
+}
+
+.btnCompra{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }

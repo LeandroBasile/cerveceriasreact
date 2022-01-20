@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
 import ItemContador from "../itemcontador/ItemContador";
 
 export const ItemDetail = ({ producto }) => {
+
+  const {agregarAlCarrito} = useCartContext()
+
+
+
   const [show, setShow] = useState(true);
 
   const onAdd = (contador) => {
     setShow(false);
-    // sumarAlCarrito({...producto, cantidad:contador})
+    agregarAlCarrito({...producto, cantidad: contador})
   };
 
   return (
@@ -16,19 +22,20 @@ export const ItemDetail = ({ producto }) => {
         <div className="detalle detalleProducto">
           <h2>{producto.title}</h2>
           <img className="imagenDetail" src={producto.foto} alt="" />
-          <p>{producto.description}</p>
         </div>
         <div className="detalle detalleCompra">
           <h3>{producto.prise}</h3>
+          <p>Detalle: {producto.description}</p>
+          
           {show ? (
             <ItemContador stock={producto.stock} onAdd={onAdd} />
           ) : (
-            <div>
+            <div className="btnCompra">
               <Link to="/cart">
-                <button>Terminar la compra</button>
+                <button type="button" class="btn btn-primary">Terminar la compra</button>
               </Link>
               <Link to="/">
-                <button>Seguir Comprando</button>
+                <button type="button" class="btn btn-primary" >Seguir Comprando</button>
               </Link>
             </div>
           )}
