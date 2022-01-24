@@ -35,8 +35,8 @@ function Navbar() {
         <li>
           <a href="/#">Contacto</a>
         </li>
-        <li>
-          <Link to="/cart">
+        <li >
+          <Link className="linkCartWid" to="/cart">
             <CartWidget className="carrito" />
           </Link>
         </li>

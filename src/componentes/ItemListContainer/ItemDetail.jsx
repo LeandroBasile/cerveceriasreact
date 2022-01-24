@@ -24,18 +24,19 @@ export const ItemDetail = ({ producto }) => {
           <img className="imagenDetail" src={producto.foto} alt="" />
         </div>
         <div className="detalle detalleCompra">
-          <h3>{producto.prise}</h3>
+          <h3>$ {producto.prise}</h3>
           <p>Detalle: {producto.description}</p>
           
           {show ? (
             <ItemContador stock={producto.stock} onAdd={onAdd} />
           ) : (
             <div className="btnCompra">
+              
               <Link to="/cart">
-                <button type="button" class="btn btn-primary">Terminar la compra</button>
+                <button type="button" className="btn btn-primary">Terminar la compra</button>
               </Link>
               <Link to="/">
-                <button type="button" class="btn btn-primary" >Seguir Comprando</button>
+                <button type="button" className="btn btn-primary" >Seguir Comprando</button>
               </Link>
             </div>
           )}

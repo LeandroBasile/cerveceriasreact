@@ -12,7 +12,6 @@ export const ItemDetailContainter = () => {
     pizarron.then((resp) =>
       setProducto(resp.find((prod) => prod.id   === idDetalle)));
   }, [idDetalle]);
-  console.dir(idDetalle);
 
   return (
     <div>

@@ -45,7 +45,7 @@ function ItemContador({ stock, onAdd }) {
       <div>
         <button
           type="button"
-          className="btn btn-primary"
+          className={contador === 0 ? 'btn btn-danger opacity-50 pe-none' : 'btn btn-primary'}
           onClick={() => onAdd(contador)}
         >
           Agregar a Carrito

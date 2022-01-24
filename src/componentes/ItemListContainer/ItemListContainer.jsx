@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { pizarron } from "../item";
@@ -23,8 +22,6 @@ export const ItemListContainer = ({ saludo }) => {
     }
     
   }, [idCategoria]);
-  console.log(idCategoria)
-  console.log(productos);
 
   return (
     <div className="listContainer">

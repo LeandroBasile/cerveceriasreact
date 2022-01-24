@@ -1,7 +1,7 @@
 import React, { useState, useContext, createContext } from "react";
 
 //crea el contexto
-const cartContext = createContext([]);
+export const cartContext = createContext([]);
 
 //funcion que evita importar el useConxt en todos los archivos donde quiero usarlo.
 export function useCartContext() {
@@ -15,10 +15,11 @@ export const CartContextProvider = ({ children }) => {
 
   function agregarAlCarrito(items) {
     console.log(items)
+    
     setCartList([...cartList, items]);
 
     const indice = cartList.findIndex((i) => i.id === items.id);
-
+    
     if (indice > -1) {
       const cantidadVieja = cartList[indice].cantidad; 
 
@@ -38,10 +39,24 @@ export const CartContextProvider = ({ children }) => {
     setCartList([]);
   }
 
+  const eliminarProducto = (id) =>{
+    const productoEliminado = cartList.filter((product) => product.id !== id)
+    setCartList(productoEliminado)
+  }
+
+  const totalProd = () =>{
+    const totalProductos = cartList.map(item => item.cantidad).reduce((prev,curr) => prev + curr,0)
+    return totalProductos
+  }
+
+  const total =()=> {
+    const totalCarrito = cartList.reduce((prev, curr) => prev + curr.prise * curr.cantidad, 0)
+  return totalCarrito }
+
   console.log(cartList);
 
   return (
-    <cartContext.Provider value={{ cartList, agregarAlCarrito, vaciarCarrito }}>
+    <cartContext.Provider value={{ cartList, agregarAlCarrito, vaciarCarrito, eliminarProducto, total, totalProd }}>
       {children}
     </cartContext.Provider>
   );
