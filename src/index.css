@@ -106,8 +106,8 @@ code {
 }
 
 .card {
-  width: 200px !important;
-  height: 250px;
+  width: 250px !important;
+  height: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -127,8 +127,8 @@ code {
 }
 
 .imagenes {
-  width: 70px !important;
-  height: 100px !important;
+  width: 80px !important;
+  height: 120px !important;
 }
 
 .cajaDetalle {

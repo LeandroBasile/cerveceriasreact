@@ -22,7 +22,7 @@ function App() {
           />
           <Route
             exact
-            path="/detalle/:idDetalle"
+            path="/detalle/:id"
             element={<ItemDetailContainter />}
           />
           <Route exact path="/cart" element={<Cart/>} />

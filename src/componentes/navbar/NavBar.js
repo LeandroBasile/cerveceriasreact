@@ -13,7 +13,7 @@ function Navbar() {
         </li>
         <li>
           <Link to="/">
-            <img src='./imgnavegador/lupulo.png' alt="" />
+            <img src='./lupulo.png' alt="" />
           </Link>
         </li>
 
