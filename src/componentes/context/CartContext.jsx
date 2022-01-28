@@ -50,7 +50,7 @@ export const CartContextProvider = ({ children }) => {
   }
 
   const total =()=> {
-    const totalCarrito = cartList.reduce((prev, curr) => prev + curr.prise * curr.cantidad, 0)
+    const totalCarrito = cartList.reduce((prev, curr) => prev + curr.price * curr.cantidad, 0)
   return totalCarrito }
 
   console.log(cartList);

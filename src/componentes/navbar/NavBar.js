@@ -1,4 +1,3 @@
-import lupulo from "../../imgnavegador/lupulo.png";
 import CartWidget from "../cart/CartWidget";
 import { Link } from "react-router-dom";
 
@@ -14,7 +13,7 @@ function Navbar() {
         </li>
         <li>
           <Link to="/">
-            <img src={lupulo} alt="" />
+            <img src='./imgnavegador/lupulo.png' alt="" />
           </Link>
         </li>
 

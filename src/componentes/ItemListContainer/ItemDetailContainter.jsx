@@ -1,17 +1,27 @@
-import React from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { pizarron } from "../item";
+//import { pizarron } from "../item";
 import { ItemDetail } from "./ItemDetail";
 
+
 export const ItemDetailContainter = () => {
+
+
   const [producto, setProducto] = useState({});
-  const { idDetalle } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    pizarron.then((resp) =>
-      setProducto(resp.find((prod) => prod.id   === idDetalle)));
-  }, [idDetalle]);
+
+    const db = getFirestore()
+    const queryProducto = doc(db,'items', id)
+    getDoc(queryProducto)
+    .then((resp) => setProducto({id:resp.id, ...resp.data()}))
+    .catch(err=>err)
+    
+    
+  }, [id]);
+  
 
   return (
     <div>

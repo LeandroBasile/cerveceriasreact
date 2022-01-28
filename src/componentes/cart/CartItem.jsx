@@ -20,8 +20,8 @@ export const CartItem = () => {
           <tr>
             <td>{prodc.title}</td>
             <td>{prodc.cantidad}</td>
-            <td>{prodc.prise}</td>
-            <td>{prodc.prise * prodc.cantidad}</td>
+            <td>{prodc.price}</td>
+            <td>{prodc.price * prodc.cantidad}</td>
             <td>
               <button onClick={() => eliminarProducto(prodc.id)}>X</button>{" "}
             </td>
