@@ -2,7 +2,7 @@ import { BsFillCartPlusFill } from "react-icons/bs";
 import { useCartContext } from "../context/CartContext";
 
 function CartWidget() {
-  const { totalProd ,cartList } = useCartContext();
+  const { totalProd, cartList } = useCartContext();
 
   const cantidadItems = () => {
     const itemsCantidad = totalProd();
@@ -10,7 +10,6 @@ function CartWidget() {
     return itemsCantidad;
   };
 
-  console.log(cantidadItems());
 
   return (
     <div className="cartWid">

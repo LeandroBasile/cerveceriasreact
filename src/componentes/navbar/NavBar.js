@@ -5,11 +5,9 @@ function Navbar() {
   return (
     <nav className="navegador">
       <ul className="menu">
+        
         <li>
-          <a href="index.html">Inicio </a>
-        </li>
-        <li>
-          <a href="/#">Locales</a>
+          <Link to="/categoria/lager">Lagers</Link>
         </li>
         <li>
           <Link to="/">
@@ -18,22 +16,10 @@ function Navbar() {
         </li>
 
         <li>
-          <Link to="/">Tienda</Link>
-          <ul>
-            <li>
-              <Link to="/categoria/rubia">Doradas</Link>
-            </li>
-            <li>
-              <Link to="/categoria/roja">Rojas</Link>
-            </li>
-            <li>
-              <Link to="/categoria/negra">Negras</Link>
-            </li>
-          </ul>
+          <Link to="/categoria/ales">Ales</Link>
+         
         </li>
-        <li>
-          <a href="/#">Contacto</a>
-        </li>
+        
         <li >
           <Link className="linkCartWid" to="/cart">
             <CartWidget className="carrito" />

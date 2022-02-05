@@ -12,9 +12,10 @@ export function useCartContext() {
 
 export const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
+  const [orden, setOrden] = useState("");
+
 
   function agregarAlCarrito(items) {
-    console.log(items)
     
     setCartList([...cartList, items]);
 
@@ -53,10 +54,9 @@ export const CartContextProvider = ({ children }) => {
     const totalCarrito = cartList.reduce((prev, curr) => prev + curr.price * curr.cantidad, 0)
   return totalCarrito }
 
-  console.log(cartList);
 
   return (
-    <cartContext.Provider value={{ cartList, agregarAlCarrito, vaciarCarrito, eliminarProducto, total, totalProd }}>
+    <cartContext.Provider value={{ cartList, agregarAlCarrito, vaciarCarrito, eliminarProducto, total, totalProd, orden, setOrden }}>
       {children}
     </cartContext.Provider>
   );

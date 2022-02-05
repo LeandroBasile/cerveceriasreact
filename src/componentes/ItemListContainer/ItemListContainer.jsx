@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFirestoreApp } from "../../firebase/dbConfig";
-import { pizarron } from "../item";
 import { ItemList } from "./ItemList";
 import {
   collection,
-  doc,
-  getDoc,
   getDocs,
   getFirestore,
   query,
@@ -31,7 +27,7 @@ export const ItemListContainer = ({ saludo }) => {
     if (idCategoria){
       const queryCollection = query(collection(db, 'items'),where('categoria', '==', idCategoria))
       getDocs(queryCollection)
-    .then((resp) => setProductos(resp.docs.map(prod=>({categoria: prod.categoria, ...prod.data()}))))
+    .then((resp) => setProductos(resp.docs.map(prod=>({id: prod.id, ...prod.data()}))))
     .catch((err) => console.log(err))
     .finally(() => setCargando(false));
     }else{

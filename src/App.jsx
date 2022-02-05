@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ItemDetailContainter } from "./componentes/ItemListContainer/ItemDetailContainter";
 import { CartContextProvider } from "./componentes/context/CartContext";
 import { Cart } from "./componentes/cart/Cart";
+import { CompraFinal } from "./componentes/cart/CompraFinal";
 
 function App() {
   return (
@@ -13,12 +14,12 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<ItemListContainer saludo="hola" />} />
+          <Route exact path="/" element={<ItemListContainer saludo="Tienda de cerveza" />} />
 
           <Route
             exact
             path="/categoria/:idCategoria"
-            element={<ItemListContainer saludo="hola" />}
+            element={<ItemListContainer saludo="Tienda de cerveza" />}
           />
           <Route
             exact
@@ -26,6 +27,9 @@ function App() {
             element={<ItemDetailContainter />}
           />
           <Route exact path="/cart" element={<Cart/>} />
+
+          <Route exact path="/comprafinal" element={<CompraFinal/>} />
+
         </Routes>
       </BrowserRouter>
     </CartContextProvider>
