@@ -18,27 +18,23 @@ function ItemContador({ stock, onAdd }) {
     }
   };
 
-  // const mostrarContador = () => {
-  //     alert(contador)
-  // }
-
   return (
     <div className="contador">
       <div>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={restarContador}
-        >
-          -
-        </button>
-        <h3>{contador}</h3>
         <button
           type="button"
           className="btn btn-success"
           onClick={sumarContador}
         >
           +
+        </button>
+        <h3>{contador}</h3>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={restarContador}
+        >
+          -
         </button>{" "}
         <br></br>
       </div>

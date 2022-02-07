@@ -12,17 +12,17 @@ export function useCartContext() {
 
 export const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
-  const [orden, setOrden] = useState("");
-
+  const [orden, setOrden] = useState({
+    id:'', total:''
+  });
 
   function agregarAlCarrito(items) {
-    
     setCartList([...cartList, items]);
 
     const indice = cartList.findIndex((i) => i.id === items.id);
-    
+
     if (indice > -1) {
-      const cantidadVieja = cartList[indice].cantidad; 
+      const cantidadVieja = cartList[indice].cantidad;
 
       let cantidadNueva = cantidadVieja + items.cantidad;
 
@@ -40,23 +40,39 @@ export const CartContextProvider = ({ children }) => {
     setCartList([]);
   }
 
-  const eliminarProducto = (id) =>{
-    const productoEliminado = cartList.filter((product) => product.id !== id)
-    setCartList(productoEliminado)
-  }
+  const eliminarProducto = (id) => {
+    const productoEliminado = cartList.filter((product) => product.id !== id);
+    setCartList(productoEliminado);
+  };
 
-  const totalProd = () =>{
-    const totalProductos = cartList.map(item => item.cantidad).reduce((prev,curr) => prev + curr,0)
-    return totalProductos
-  }
+  const totalProd = () => {
+    const totalProductos = cartList
+      .map((item) => item.cantidad)
+      .reduce((prev, curr) => prev + curr, 0);
+    return totalProductos;
+  };
 
-  const total =()=> {
-    const totalCarrito = cartList.reduce((prev, curr) => prev + curr.price * curr.cantidad, 0)
-  return totalCarrito }
-
+  const total = () => {
+    const totalCarrito = cartList.reduce(
+      (prev, curr) => prev + curr.price * curr.cantidad,
+      0
+    );
+    return totalCarrito;
+  };
 
   return (
-    <cartContext.Provider value={{ cartList, agregarAlCarrito, vaciarCarrito, eliminarProducto, total, totalProd, orden, setOrden }}>
+    <cartContext.Provider
+      value={{
+        cartList,
+        agregarAlCarrito,
+        vaciarCarrito,
+        eliminarProducto,
+        total,
+        totalProd,
+        orden,
+        setOrden,
+      }}
+    >
       {children}
     </cartContext.Provider>
   );

@@ -14,12 +14,13 @@ export const Cart = () => {
           <h2>EL CARRITO SE ENCUENTRA VACIO</h2>
           <Link to="/">
             {" "}
-            <button type="button" className="btn btn-primary">Ir a Catalogo</button>
+            <button type="button" className="btn btn-primary">
+              Ir a Catalogo
+            </button>
           </Link>
         </div>
       ) : (
-        <div>
-          
+        <div className="carritoLleno">
           <CartItem />
           <CartForm />
         </div>

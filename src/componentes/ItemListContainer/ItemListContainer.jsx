@@ -14,30 +14,21 @@ export const ItemListContainer = ({ saludo }) => {
   const [cargando, setCargando] = useState(true);
   const { idCategoria } = useParams();
 
+  const db = getFirestore();
+
+  const respColl = collection(db, "items");
+  const filtResp = idCategoria
+    ? query(respColl, where("categoria", "==", idCategoria))
+    : respColl;
+
   useEffect(() => {
-    const db = getFirestore();
-
-    // const queryProducto = doc(db, "items", id );
-    // getDoc(queryProducto)
-    //   .then((resp) =>{ setProducto({ id: resp.id, ...resp.data()})})
-    //   .finally(() => setCargando(false));
-
-    
-
-    if (idCategoria){
-      const queryCollection = query(collection(db, 'items'),where('categoria', '==', idCategoria))
-      getDocs(queryCollection)
-    .then((resp) => setProductos(resp.docs.map(prod=>({id: prod.id, ...prod.data()}))))
-    .catch((err) => console.log(err))
-    .finally(() => setCargando(false));
-    }else{
-      const queryCollection = query(collection(db, 'items'))
-      getDocs(queryCollection)
-      .then(res=>setProductos(res.docs.map(prod=>({id: prod.id, ...prod.data()}))))
-      .catch(err=>err)
-      .finally(()=>setCargando(false))
-    }
-  }, [idCategoria]);
+    getDocs(filtResp)
+      .then((resp) =>
+        setProductos(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
+      )
+      .catch((err) => console.log(err))
+      .finally(() => setCargando(false));
+  }, [filtResp]);
 
   return (
     <div className="listContainer">

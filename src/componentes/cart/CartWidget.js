@@ -10,7 +10,6 @@ function CartWidget() {
     return itemsCantidad;
   };
 
-
   return (
     <div className="cartWid">
       {cartList.length === 0 ? (

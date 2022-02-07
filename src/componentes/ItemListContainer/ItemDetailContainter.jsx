@@ -8,21 +8,17 @@ export const ItemDetailContainter = () => {
   const { id } = useParams();
   const [cargando, setCargando] = useState(true);
 
-  useEffect(() => {
-    const db = getFirestore();
+  const db = getFirestore();
+  const filtProdId = id ? doc(db, "items", id) : setCargando(true);
 
-    if (id) {
-      const queryProducto = doc(db, "items", id);
-      getDoc(queryProducto)
-        .then((resp) => {
-          setProducto({ id: resp.id, ...resp.data() });
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setCargando(false));
-    } else {
-      setCargando(true);
-    }
-  }, [id]);
+  useEffect(() => {
+    getDoc(filtProdId)
+      .then((resp) => {
+        setProducto({ id: resp.id, ...resp.data() });
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setCargando(false));
+  }, [filtProdId]);
 
   return (
     <div className="itemDetalContainer">

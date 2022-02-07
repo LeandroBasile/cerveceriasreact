@@ -9,7 +9,7 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 
 export const CartForm = () => {
@@ -20,14 +20,9 @@ export const CartForm = () => {
     emailDos: "",
     tel: "",
   });
-  const { cartList, total, setOrden, orden } = useCartContext();
+  const { cartList, total, setOrden, vaciarCarrito } = useCartContext();
 
-  const navigate = useNavigate()
-
-
-
-
-  const [cargando, setCargando] = useState(true);
+  const navigate = useNavigate();
 
   const [error, setError] = useState("");
 
@@ -41,37 +36,48 @@ export const CartForm = () => {
 
   const realizarCompra = async (e) => {
     e.preventDefault();
-    let orden = {};
+    let ordenes = {};
 
-    orden.buyer = datoInput;
-    orden.total = total();
+    ordenes.buyer = datoInput;
 
-    orden.items = cartList.map((cartItem) => {
+    ordenes.total = total();
+
+    ordenes.items = cartList.map((cartItem) => {
       const id = cartItem.id;
       const nombre = cartItem.title;
       const precio = parseInt(cartItem.price) * parseInt(cartItem.cantidad);
+
       const cantidad = cartItem.cantidad;
+
       return { id, nombre, precio, cantidad };
     });
 
     if (datosAValidar.includes("")) {
-      setError("Debe completar todos los datos");
+      setError("Los campos se encuentran incompletos");
+      return;
     }
     if (datoInput.tel.length < 8 || datoInput.tel.length > 10) {
       setError("El numero telefonico es incorrecto");
+      return;
     }
     if (datoInput.email !== datoInput.emailDos) {
       setError("El email es incorrecto");
-    } if(datoInput.edad < 18){
-      setError('La venta esta prohibida a menores de 18 Años')
+      return;
+    }
+    if (datoInput.edad < 18) {
+      setError("La venta esta prohibida a menores de 18 Años");
+      return;
     } else {
       const db = getFirestore();
 
       const ordenesCollecion = collection(db, "ordenes");
-      await addDoc(ordenesCollecion, orden)
-        .then((resp) => setOrden(resp.id))
+
+      await addDoc(ordenesCollecion, ordenes)
+        .then((resp) => setOrden({ id: resp.id, total: ordenes.total }))
+        .then(() => vaciarCarrito())
+
         .catch((err) => console.log(err))
-        .finally(() => navigate('/comprafinal') );
+        .finally(() => navigate("/comprafinal"));
 
       const queryCollection = collection(db, "items");
 
@@ -116,8 +122,9 @@ export const CartForm = () => {
 
   return (
     <div>
-      <form onSubmit={realizarCompra}>
+      <form className="formCompra" onSubmit={realizarCompra}>
         <input
+          id="input"
           type="nombre"
           name="nombre"
           placeholder="Nombre"
@@ -125,6 +132,7 @@ export const CartForm = () => {
           value={datoInput.nombre}
         ></input>
         <input
+          id="input"
           type="number"
           name="edad"
           placeholder="Edad"
@@ -132,34 +140,41 @@ export const CartForm = () => {
           value={datoInput.edad}
         ></input>
         <input
+          id="input"
           type="email"
           name="email"
-          placeholder="email"
+          placeholder="Em@il"
           onChange={manejandoCambios}
           value={datoInput.email}
         ></input>
         <input
+          id="input"
           type="email"
           name="emailDos"
-          placeholder="email"
+          placeholder="Confirmar em@il"
           onChange={manejandoCambios}
           value={datoInput.emailDos}
         ></input>
         <input
+          id="input"
           type="tel"
           name="tel"
-          placeholder="15"
+          placeholder="1500000000"
           className="tel"
           onChange={manejandoCambios}
           value={datoInput.tel}
         ></input>
 
-        <button type="button" className="btn btn-primary" onSubmit={realizarCompra}>Realizar Compra</button>
-
-        <div>
-          
-          <h2>{error && error}</h2>
-        </div>
+        <button
+          className={
+            datosAValidar.includes("")
+              ? "btn btn-primary opacity-50 pe-none"
+              : "btn btn-primary"
+          }
+        >
+          Realizar Compra
+        </button>
+        <h3>{error && error}</h3>
       </form>
     </div>
   );

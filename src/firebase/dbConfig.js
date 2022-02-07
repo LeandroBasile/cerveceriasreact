@@ -6,11 +6,11 @@ const firebaseConfig = {
   projectId: "cerveza-proyect-ef9b3",
   storageBucket: "cerveza-proyect-ef9b3.appspot.com",
   messagingSenderId: "685897945096",
-  appId: "1:685897945096:web:aa37ef60ed92db0b7641bd"
+  appId: "1:685897945096:web:aa37ef60ed92db0b7641bd",
 };
 
 const app = initializeApp(firebaseConfig);
 
-export const getFirestoreApp=()=>{
-    return app
-}
+export const getFirestoreApp = () => {
+  return app;
+};
